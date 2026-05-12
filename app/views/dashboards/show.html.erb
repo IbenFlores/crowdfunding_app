@@ -1,0 +1,31 @@
+<h1><%= t('dashboard.title') %></h1>
+
+<p>
+  <%= t('dashboard.currency_pref') %>: 
+  <strong><%= @user.preferred_currency %></strong>
+</p>
+
+<table style="width: 100%; text-align: left; border-collapse: collapse; margin-top: 20px;">
+  <thead>
+    <tr style="border-bottom: 2px solid #ccc;">
+      <th style="padding: 10px;"><%= t('dashboard.project') %></th>
+      <th style="padding: 10px;"><%= t('dashboard.amount_base') %></th>
+      <th style="padding: 10px;"><%= t('dashboard.amount_local') %></th>
+      <th style="padding: 10px;"><%= t('dashboard.tx_code') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @donations.each do |donation| %>
+      <tr style="border-bottom: 1px solid #eee;">
+        <td style="padding: 10px;"><%= donation.project.title %></td>
+        <td style="padding: 10px;">
+          <%= number_to_currency(donation.original_amount, unit: donation.original_currency + " ") %>
+        </td>
+        <td style="padding: 10px; color: #0056b3;">
+          <%= number_to_currency(donation.amount, unit: donation.project.base_currency + " ") %>
+        </td>
+        <td style="padding: 10px;"><%= donation.transaction_code %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

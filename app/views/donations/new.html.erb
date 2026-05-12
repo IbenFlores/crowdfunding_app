@@ -1,0 +1,27 @@
+<h1><%= t('donations.new_title', project: @project.title) %></h1>
+
+<%= form_with model: [@project, @donation], local: true do |form| %>
+  <% if @donation.errors.any? %>
+    <div style="color: red; border: 1px solid red; padding: 10px; margin-bottom: 15px;">
+      <ul>
+        <% @donation.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div style="margin-bottom: 15px;">
+    <%= form.label :original_amount, t('donations.amount_label'), style: "display: block; margin-bottom: 5px;" %>
+    <%= form.number_field :original_amount, step: 0.01, min: 0.01, required: true %>
+  </div>
+
+  <div style="margin-bottom: 15px;">
+    <%= form.label :original_currency, t('donations.currency_label'), style: "display: block; margin-bottom: 5px;" %>
+    <%= form.select :original_currency, ['PEN', 'USD', 'EUR', 'GBP', 'MXN', 'CLP'], required: true %>
+  </div>
+
+  <div style="margin-top: 15px;">
+    <%= form.submit t('donations.submit'), style: "padding: 8px 15px; background: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer;" %>
+  </div>
+<% end %>

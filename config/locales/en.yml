@@ -1,0 +1,31 @@
+en:
+  donations:
+    success: "Donation processed successfully."
+    error: "There was a problem processing the donation."
+    new_title: "Donate to %{project}"
+    amount_label: "Amount to donate"
+    currency_label: "Select your currency"
+    submit: "Make Donation"
+  projects:
+    index_title: "Social Projects"
+    goal: "Goal:"
+    raised: "Raised:"
+    donate: "Donate now"
+    view: "View details"
+    currency: "Base Currency:"
+    donations_list: "Donations Received"
+    donor: "Donor"
+    original_donation: "Original Donation"
+    converted_amount: "Converted to Base Currency"
+  dashboard:
+    title: "My Dashboard"
+    currency_pref: "Preferred Currency"
+    project: "Project"
+    amount_base: "My Donation"
+    amount_local: "Converted to Project Currency"
+    tx_code: "Transaction Code"
+  nav:
+    login: "Log In"
+    logout: "Log Out"
+    language: "Language"
+    profile: "My Profile"

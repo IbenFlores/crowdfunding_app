@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for(:title) || "Crowdfunding App" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Crowdfunding App">
+    <meta name="mobile-web-app-capable" content="yes">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= yield :head %>
+
+    <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
+    <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
+
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.png">
+
+    <%# Includes all stylesheet files in app/assets/stylesheets %>
+    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <nav style="display: flex; justify-content: space-between; padding: 10px; background: #f4f4f4; margin-bottom: 20px;">
+      <div>
+        <strong><%= link_to "Crowdfunding", root_path %></strong>
+      </div>
+      <div>
+        <% if authenticated? %>
+          <%= link_to t('nav.profile'), dashboard_path, style: "margin-right: 15px;" %>
+          <%= button_to t('nav.logout'), session_path, method: :delete, form: {style: 'display:inline-block;'} %>
+        <% else %>
+          <%= link_to t('nav.login'), new_session_path %>
+        <% end %>
+        <span style="margin-left: 15px;">| <%= t('nav.language') %>: </span>
+        <%= link_to "ES", root_path(locale: :es) %> | 
+        <%= link_to "EN", root_path(locale: :en) %>
+      </div>
+    </nav>
+
+    <% if notice.present? %>
+      <div style="color: green; padding: 10px; border: 1px solid green; margin-bottom: 10px;"><%= notice %></div>
+    <% end %>
+    <% if alert.present? %>
+      <div style="color: red; padding: 10px; border: 1px solid red; margin-bottom: 10px;"><%= alert %></div>
+    <% end %>
+
+    <main style="max-width: 800px; margin: 0 auto;">
+      <%= yield %>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+<h1><%= @project.title %></h1>
+<p><%= @project.description %></p>
+<p><strong><%= t('projects.goal') %></strong> <%= number_to_currency(@project.goal_amount, unit: @project.base_currency + " ") %></p>
+<p><strong><%= t('projects.raised') %></strong> <%= number_to_currency(@project.current_amount, unit: @project.base_currency + " ") %></p>
+<p><strong><%= t('projects.currency') %></strong> <%= @project.base_currency %></p>
+
+<div style="margin-top: 20px; margin-bottom: 40px;">
+  <%= link_to t('projects.donate'), new_project_donation_path(@project), style: "padding: 10px 15px; background: #007bff; color: white; text-decoration: none; border-radius: 5px;" %>
+</div>
+
+<hr>
+
+<h2><%= t('projects.donations_list') %></h2>
+<table style="width: 100%; text-align: left; border-collapse: collapse; margin-top: 10px;">
+  <thead>
+    <tr style="border-bottom: 2px solid #ccc;">
+      <th style="padding: 10px;"><%= t('projects.donor') %></th>
+      <th style="padding: 10px;"><%= t('projects.original_donation') %></th>
+      <th style="padding: 10px;"><%= t('projects.converted_amount') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @project.donations.includes(:user).each do |donation| %>
+      <tr style="border-bottom: 1px solid #eee;">
+        <td style="padding: 10px;"><%= donation.user.email_address %></td>
+        <td style="padding: 10px;"><%= number_to_currency(donation.original_amount, unit: donation.original_currency + " ") %></td>
+        <td style="padding: 10px; color: #28a745;"><%= number_to_currency(donation.amount, unit: @project.base_currency + " ") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

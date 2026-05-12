@@ -1,0 +1,31 @@
+es:
+  donations:
+    success: "Donación procesada exitosamente."
+    error: "Hubo un problema procesando la donación."
+    new_title: "Donar a %{project}"
+    amount_label: "Monto a donar"
+    currency_label: "Selecciona tu moneda"
+    submit: "Realizar Donación"
+  projects:
+    index_title: "Proyectos Sociales"
+    goal: "Meta:"
+    raised: "Recaudado:"
+    donate: "Donar ahora"
+    view: "Ver detalles"
+    currency: "Moneda Base:"
+    donations_list: "Donaciones Recibidas"
+    donor: "Donante"
+    original_donation: "Donación Original"
+    converted_amount: "Convertido a Moneda Base"
+  dashboard:
+    title: "Mi Panel"
+    currency_pref: "Moneda Preferida"
+    project: "Proyecto"
+    amount_base: "Mi Donación"
+    amount_local: "Convertido a Moneda del Proyecto"
+    tx_code: "Código de Transacción"
+  nav:
+    login: "Iniciar Sesión"
+    logout: "Cerrar Sesión"
+    language: "Idioma"
+    profile: "Mi Perfil"
