@@ -1,4 +1,5 @@
-class Api::V1::ProjectsController < ActionController::API
+class Api::V1::ProjectsController < Api::V1::BaseController
+  before_action :authenticate_request
 
   def index
     projects = Project.all

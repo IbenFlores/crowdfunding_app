@@ -32,6 +32,8 @@ gem "solid_queue"
 gem "solid_cache"
 gem "solid_cable"
 
+gem 'jwt'
+
 gem "bootsnap", require: false
 
 group :development, :test do
