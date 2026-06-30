@@ -4,7 +4,7 @@ source "https://rubygems.org"
 ruby "3.3.5"
 
 # Framework principal
-gem "rails", "8.1.1"
+gem "rails", "8.1.3"
 
 # Base de datos
 gem "pg", "~> 1.1"
